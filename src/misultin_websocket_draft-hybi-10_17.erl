@@ -95,7 +95,7 @@ check_websocket(Headers, RequiredHeaders) ->
 handshake(_Req, Headers, {_Path, _Origin, _Host}) ->
 	% build data
 	Key = list_to_binary(misultin_utility:header_get_value('Sec-WebSocket-Key', Headers)),
-	Accept = base64:encode_to_string(crypto:sha(<<Key/binary, "258EAFA5-E914-47DA-95CA-C5AB0DC85B11">>)),
+	Accept = base64:encode_to_string(crypto:hash(sha , <<Key/binary, "258EAFA5-E914-47DA-95CA-C5AB0DC85B11">>)),
 	["HTTP/1.1 101 Switching Protocols\r\n",
 		"Upgrade: websocket\r\n",
 		"Connection: Upgrade\r\n",

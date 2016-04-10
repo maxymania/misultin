@@ -512,7 +512,7 @@ hex(N) when N >= 10, N < 16 -> $a + (N-10).
 
 -spec get_unix_timestamp() -> TimeStamp::non_neg_integer().
 -spec get_unix_timestamp({MegaSecs::non_neg_integer(), Secs::non_neg_integer(), _MicroSecs::non_neg_integer()}) -> TimeStamp::non_neg_integer().
-get_unix_timestamp() -> get_unix_timestamp(erlang:now()).
+get_unix_timestamp() -> get_unix_timestamp(erlang:timestamp()).
 get_unix_timestamp({MegaSecs, Secs, _MicroSecs}) -> MegaSecs * 1000000 + Secs.
 
 
